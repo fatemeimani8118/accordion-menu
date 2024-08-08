@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="master/style.css" />
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css" />
+  </head>
+  <body>
+    <main>
+      <div id="back">
+        <section>
+          <h1>Frequently asked questions</h1>
+          <p>Learn more about passwords and our servide.</p>
+        </section>
+        <section id="list">
+          <ul>
+            <li>
+              <div data-status="off">
+                <p data-status="off">Do i need a unique password for every account?</p>
+                <i class="bi bi-arrow-down-circle"></i>
+              </div>
+              <section class="dis">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fugit aliquid necessitatibus modi laudantium omnis optio dicta, amet
+                deleniti, eum placeat voluptate.  incidunt, perspiciatis fuga voluptatum quos exercitationem facere, maiores eligendi consequuntur in obcaecati autem sequi officiis. Earum, alias non.
+              </section>
+            </li>
+            <li>
+              <div data-status="off">
+                <p>Is your service safe to use?</p>
+                <i class="bi bi-arrow-down-circle"></i>
+              </div>
+              <section class="dis">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fugit aliquid necessitatibus modi laudantium omnis optio dicta, ametfuga voluptatum quos exercitationem facere, maiores eligendi consequuntur in obcaecati autem sequi officiis. Earum, alias non, sunt
+                perferendis.
+              </section>
+            </li>
+            <li>
+              <div data-status="off">
+                <p>Why should I use your service?</p>
+                <i class="bi bi-arrow-down-circle"></i>
+              </div>
+              <section class="dis">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fugit aliquid necessitatibus modi laudantium omnis optio dicta, ametfuga voluptatum quos exercitationem facere, maiores eligendi consequuntur in obcaecati autem sequi officiis. Earum, alias non, sunt
+                perferendis incidunt consequatur dolore, fugiat temporibus similique dicta! Nemo blanditiis.
+              </section>
+            </li>
+            <li>
+              <div data-status="off">
+                <p>How can I see my passwords later?</p>
+                <i class="bi bi-arrow-down-circle"></i>
+              </div>
+              <section class="dis">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fugit aliquid necessitatibus modi laudantium omnis optio dicta, ametfuga voluptatum quos exercitationem facere, maiores eligendi consequuntur in obcaecati autem sequi officiis.nobis!
+              </section>
+            </li>
+            <li>
+              <div data-status="off">
+                <p>What makes a strong password?</p>
+                <i class="bi bi-arrow-down-circle"></i>
+              </div>
+              <section class="dis">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fugit aliquid necessitatibus modi laudantium omnis optio dicta, ametdeleniti, eum placeat voluptate. Delectus accusamus consectetur velit quisquam voluptatem fugiat rerum incidunt, perspiciatis aliquam.              </section>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+    <!------- footer ------->
+    <div id="footer">
+      <div></div>
+      <figure><img src="./img/me.jpg" /></figure>
+    <section id="social">
+      <a href=""><i class="bi bi-github"></i></a>
+      
+   <a href=""><i class="bi bi-linkedin" ></i></a>
+   
+    <a href=""><i class="bi bi-instagram" ></i></a>
+    
+    <a href=""><i class="bi bi-phone-fill"></i></a>
+  </section>
+    </div>
+    <!--------------------------------------------- start js ----------------------------------------->
+    <script>
+      const items = document.querySelectorAll("li>div");
+      const icon = document.querySelectorAll("i");
+      const _p = document.querySelectorAll("p");
+      const dis = document.querySelectorAll(".dis");
+      const foot = document.querySelector('#footer')
+
+      dis.forEach((s) => {
+        s.setAttribute("data-h", s.clientHeight);
+        s.style.height = "0";
+        console.log(s.clientHeight);
+      });
+
+      items.forEach((val, i) => {
+        val.addEventListener("click", () => {
+          const currentIcon = val.querySelector("i");
+          // reset///
+          items.forEach((item, index) => {
+            if (index != i) {
+              if (item.getAttribute("data-status") == "on") {
+                const resetIcon = item.querySelector("i");
+                resetIcon.style.transform = "rotate(0deg)";
+                item.nextElementSibling.style.height = "0px";
+                item.setAttribute("data-status", "off");
+                item.nextElementSibling.style.padding = "0";
+              }
+            }
+          });
+
+          // reset///
+          if (val.getAttribute("data-status") === "off") {
+            currentIcon.style.transform = "rotate(180deg)";
+            val.nextElementSibling.style.padding = "2%";
+            val.nextElementSibling.style.height = parseInt(val.nextElementSibling.getAttribute("data-h")) + 10 + "px";
+            val.setAttribute("data-status", "on");
+          } else {
+            currentIcon.style.transform = "rotate(0deg)";
+            val.nextElementSibling.style.height = "0px";
+            val.setAttribute("data-status", "off");
+            val.nextElementSibling.style.padding = "0";
+          }
+        });
+      });
+
+      foot.addEventListener('mousemove', ()=> {
+        const social = document.querySelector('#social')
+        social.style.left = '100%'
+});
+foot.addEventListener('mouseout', ()=> {
+        const social = document.querySelector('#social')
+        social.style.left = '0%'
+});
+    </script>
+  </body>
+</html>
